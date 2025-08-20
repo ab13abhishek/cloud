@@ -1,84 +1,48 @@
 :root{
-  --hue: 265;
-  --bg1: hsl(var(--hue) 70% 12%);
-  --bg2: hsl(calc(var(--hue)+30) 70% 8%);
-  --text: hsl(0 0% 98%);
-  --muted: hsl(0 0% 75%);
-  --accent: hsl(calc(var(--hue)+160) 90% 60%);
-  --card: hsl(var(--hue) 25% 12% / .55);
-  --ring: hsl(var(--hue) 95% 72% / .35);
-  --radius: 18px;
-  --shadow: 0 18px 50px hsl(0 0% 0% / .35);
+  --hue: 220;
+  --bg1: hsl(var(--hue) 90% 95%);   /* light background */
+  --bg2: hsl(calc(var(--hue)+40) 90% 88%);
+  --text: hsl(220 20% 15%);         /* dark text for contrast */
+  --muted: hsl(220 10% 35%);
+  --accent: hsl(calc(var(--hue)+160) 80% 45%);
+  --card: #ffffff;
+  --radius: 14px;
+  --shadow: 0 10px 25px hsl(220 20% 20% / .15);
 }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body{
+body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1200px 800px at 20% -10%, var(--bg1), transparent),
-    radial-gradient(1000px 600px at 120% 10%, var(--bg2), transparent),
-    linear-gradient(160deg, hsl(var(--hue) 60% 6%), hsl(calc(var(--hue)+40) 60% 4%));
-  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
 }
-
-.aurora{
-  position: fixed; inset: -20vmax; z-index: -1; filter: blur(60px); opacity: .65; pointer-events: none;
-  background: conic-gradient(from 0deg,
-    hsl(var(--hue) 90% 60%/.6),
-    transparent 35%,
-    hsl(calc(var(--hue)+120) 90% 60%/.6),
-    transparent 70%,
-    hsl(calc(var(--hue)-120) 90% 65%/.6));
-  animation: spin 24s linear infinite;
-}
-@keyframes spin { to { transform: rotate(1turn); } }
 
 .wrap { width: min(1100px, 92%); margin-inline: auto; }
-header { position: sticky; top: 0; z-index: 10;
-  backdrop-filter: saturate(120%) blur(10px);
-  background: linear-gradient(to bottom, hsl(0 0% 0%/.35), transparent);
-  border-bottom: 1px solid hsl(0 0% 100%/.06);
+
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: var(--shadow);
+  z-index: 10;
 }
-.nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-.brand{ font-weight:800; letter-spacing:.5px; font-size:1.1rem }
-.brand span{ color: var(--accent); }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { font-weight: 800; font-size: 1.2rem; color: var(--accent); }
 
-.hero{ padding: clamp(56px, 8vw, 120px) 0 64px; text-align: center; }
-h1{ font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05; margin: 0 0 14px; font-weight: 900; }
-.accent{ color: var(--accent); }
-.sub{ color: var(--muted); font-size: clamp(1rem, 2.2vw, 1.2rem); margin: 0 auto 26px; max-width: 58ch; }
+.hero { padding: 80px 0; text-align: center; }
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 12px; font-weight: 800; }
+.accent { color: var(--accent); }
+.sub { color: var(--muted); font-size: 1.2rem; margin: 0 auto 28px; max-width: 55ch; }
 
-.cta{ display:flex; gap:12px; justify-content:center; margin: 8px 0 28px; flex-wrap: wrap; }
+.cta { display: flex; gap: 14px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
 
-.btn{
-  border: 1px solid transparent;
+.btn {
+  border: none;
   border-radius: var(--radius);
-  padding: 12px 18px;
+  padding: 12px 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(6px);
-}
-.btn:hover{ transform: translateY(-2px); }
-.btn:active{ transform: translateY(0); }
-
-.btn.primary{ background: var(--accent); color: #0b0b0f; }
-.btn.outline{ background: transparent; border-color: hsl(0 0% 100% / .2); color: var(--text); }
-.btn.ghost{ background: hsl(0 0% 100% / .06); border-color: hsl(0 0% 100% / .1); color: var(--text); }
-
-.card{
-  margin: 28px auto 0;
-  max-width: 860px;
-  background: var(--card);
-  border: 1px solid hsl(0 0% 100% / .08);
-  border-radius: calc(var(--radius) + 6px);
-  padding: 26px 26px;
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-.card h2{ margin:0 0 8px; }
-.card ul{ margin: 8px 0 0 18px; line-height: 1.7; color: va
+  transition: 0.2s ease;
